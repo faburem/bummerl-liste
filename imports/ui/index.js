@@ -1,0 +1,7 @@
+import './bummerl-shell.js'
+import './drawer-menu.js'
+import './bummerl-liste.js'
+import './bummerl-settings.js'
+import './game-history.js'
+import './point-modal.js'
+import './settings-modal.js'

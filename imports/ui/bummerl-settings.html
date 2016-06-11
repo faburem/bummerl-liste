@@ -1,0 +1,56 @@
+<dom-module id="bummerl-settings">
+  <style is="custom-style">
+    .flex {
+      @apply(--layout-horizontal);
+      @apply(--layout-around-justified);
+    }
+    .container {
+      @apply(--layout-horizontal);
+      /*@apply(--layout-justified);*/
+      margin: 10px 20px;
+    }
+    .start-justified {
+      @apply(--layout-horizontal);
+      @apply(--layout-start-justified);
+    }
+    .end-justified{
+      @apply(--layout-horizontal);
+      @apply(--layout-end-justified);
+    }
+    .card-content{
+      width:100%;
+    }
+    .justified{
+      @apply(--layout-horizontal);
+      @apply(--layout-justified);
+    }
+    .wrap{
+      @apply(--layout-horizontal);
+      @apply(--layout-wrap);
+    }
+    paper-input{
+      width:90%;
+      margin:10px;
+    }
+  </style>
+  <template>
+    <paper-card class="container" id="container" restamp>
+      <div class="card-content">
+        <template is="dom-repeat" items="{{mwcData.specialGames}}" id="domRepeat">
+          <div class="justified" restamp>
+            <div>
+              <span style="word-break:break-all;word-wrap:break-word;">{{item.specialGameName}} ({{item.specialGamePoints}})</span>
+            </div>
+            <div style="display:flex;">
+              <paper-icon-button icon="icons:create" class="small" on-tap="editGame"></paper-icon-button><paper-icon-button icon="icons:delete" class="small" on-tap="removeGame" id="{{item._id}}"></paper-icon-button>
+            </div>
+          </div>
+        </template>
+        <div class="justified" style="margin-top:10px;">
+          <paper-button raised on-tap="newGame"><iron-icon icon="icons:add"></iron-icon> Neu</paper-button>
+          <paper-button raised on-tap="resetSettings">Reset</paper-button>
+        </div>
+      </div>
+    </paper-card>
+  </template>
+</dom-module>

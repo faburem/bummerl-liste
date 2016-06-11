@@ -1,0 +1,43 @@
+<dom-module id="game-history">
+  <style is="custom-style">
+    paper-card{
+      width: 100%;
+    }
+    .flex {
+      @apply(--layout-horizontal);
+      @apply(--layout-around-justified);
+    }
+    .bottom-margin{
+      margin-bottom: 10px;
+    }
+  </style>
+  <template>
+    <template is="dom-if" if="{{!gamesFound}}">
+      <h3 style="text-align:center;color:grey">Sie haben bisher noch keine Spiele gespielt.</h3>
+    </template>
+    <template is="dom-if" if="{{gamesFound}}">
+      <template is="dom-repeat" items="{{mwcData.allGames}}">
+        <paper-card class="bottom-margin" id="{{item._id}}" on-tap="openGame">
+          <div class="card-content">
+            <div class="flex">
+              <div><strong>{{item.teamA}} ({{item.bummerlTeamACount}})</strong></div>
+              <div><strong>{{item.teamB}} ({{item.bummerlTeamBCount}})</strong></div>
+            </div>
+            <div class="flex">
+              <div style="max-width:130px;">
+                <template is="dom-repeat" items="{{item.bummerlTeamA}}">
+                  <iron-icon icon="av:fiber-manual-record"></iron-icon>
+                </template>
+              </div>
+              <div>
+                <template is="dom-repeat" items="{{item.bummerlTeamB}}">
+                  <iron-icon icon="av:fiber-manual-record"></iron-icon>
+                </template>
+              </div>
+            </div>
+          </div>
+        </paper-card>
+      </template>
+    </template>
+  </template>
+</dom-module>

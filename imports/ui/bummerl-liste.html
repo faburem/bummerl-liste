@@ -1,0 +1,120 @@
+<dom-module id="bummerl-liste">
+  <style is="custom-style">
+    .container {
+      @apply(--layout-horizontal);
+      @apply(--layout-wrap);
+    }
+    paper-fab{
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      --paper-fab-background: #fff;
+      color: #000;
+    }
+    .flex {
+      @apply(--layout-horizontal);
+      @apply(--layout-around-justified);
+    }
+    paper-card{
+      width: 100%;
+    }
+    paper-input{
+      width:100%;
+      margin: 0 10px;
+    }
+    .header-text-center{
+      @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+      /*width: 100%;*/
+    }
+    .justified-center{
+      @apply(--layout-horizontal);
+      @apply(--layout-center-justified);
+    }
+    paper-button{
+      --paper-button: {
+        @apply(--layout-vertical);
+        @apply(--layout-center-center);
+      }
+    }
+    .bottom-margin{
+      margin-bottom: 10px;
+    }
+    .width-150{
+      max-width: 130px;
+    }
+    .intro-icon{
+      color:rgba(0,0,0,0.2);
+      --iron-icon-height: 150px;
+      --iron-icon-width: 150px;
+      transform: rotate(230deg);
+      position:absolute;
+      bottom:40%;
+      left:40%;
+    }
+  </style>
+  <template>
+    <!-- test: [[currentGame]] -->
+
+    <template is="dom-if" if="[[!currentGame]]">
+      <h3 style="text-align:center; color:grey;">Bitte erstellen Sie zunächst ein Spiel!</h3>
+      <iron-icon icon="icons:reply" class="intro-icon"></iron-icon>
+    </template>
+
+    <template is="dom-if" if="[[currentGame]]">
+      <paper-card>
+        <div class="flex">
+          <paper-input label="Team A" id="teamA" value="{{mwcData.teamAName}}" on-change="teamAChanged"></paper-input>
+          <paper-input label="Team B" id="teamB" value="{{mwcData.teamBName}}" on-change="teamBChanged"></paper-input>
+        </div>
+        <div class="flex bottom-margin">
+          <div class="header-text-center">
+            <div class="width-150">
+              <template is="dom-repeat" items="{{mwcData.bummerlTeamA}}">
+                <iron-icon icon="av:fiber-manual-record"></iron-icon>
+              </template>
+              ({{mwcData.bummerlTeamACount}})
+            </div>
+          </div>
+          <div class="header-text-center">
+            <div class="width-150">
+              <template is="dom-repeat" items="{{mwcData.bummerlTeamB}}">
+                <iron-icon icon="av:fiber-manual-record"></iron-icon>
+              </template>
+            </div>
+            ({{mwcData.bummerlTeamBCount}})
+          </div>
+        </div>
+        <div class="flex bottom-margin">
+          <paper-button id="addPointsTeamA" raised style="width:100%" on-tap="addPointsTeamA">+ Punkte</paper-button>
+          <paper-button id="addPointsTeamB" raised style="width:100%" on-tap="addPointsTeamB">+ Punkte</paper-button>
+        </div>
+      </paper-card>
+      <br/>
+      <br/>
+      <paper-card class="bottom-margin">
+        <div class="card-content">
+          <template is="dom-repeat" items="{{mwcData.currentPoints}}">
+            <div class="flex">
+              <div class="header-text-center">{{item.teamApoints}}</div>
+              <div class="header-text-center">{{item.teamBpoints}}</div>
+            </div>
+          </template>
+        </div>
+      </paper-card>
+      <template is="dom-repeat" items="{{mwcData.allPoints}}">
+        <paper-card class="bottom-margin">
+          <div class="card-content">
+            <template is="dom-repeat" items="{{item.points}}" as="points">
+              <div class="flex">
+                <div class="header-text-center">{{points.teamApoints}}</div>
+                <div class="header-text-center">{{points.teamBpoints}}</div>
+              </div>
+            </template>
+          </div>
+        </paper-card>
+      </template>
+    </template>
+    <paper-fab icon="add" on-tap="newGame"></paper-fab>
+  </template>
+</dom-module>

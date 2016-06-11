@@ -1,0 +1,60 @@
+<head>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height"/>
+  <meta name="theme-color" content="#ffffff"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="16x16 32x32" href="/favicon.ico"/>
+  <title>Bummerl Liste</title>
+</head>
+<body>
+  <style>
+  /*paper-toolbar {
+    --paper-toolbar-background: white;
+    --paper-toolbar-color: black;
+  }*/
+  app-header {
+    background-color: white;
+    color: var(--app-secondary-color);
+  }
+  app-header paper-icon-button {
+    --paper-icon-button-ink-color: white;
+  }
+  .drawer-list {
+    margin: 0 20px;
+  }
+  .drawer-list a, a:visited {
+    display: block;
+    padding: 0 16px;
+    line-height: 40px;
+    text-decoration: none;
+    color: var(--app-secondary-color);
+  }
+  .drawer-list a.iron-selected {
+    color: black;
+    font-weight: bold;
+  }
+  .drawer-list a.subroute {
+    padding-left: 32px;
+  }
+  a > iron-icon {
+    margin: auto 10px;
+  }
+  body {
+    font-family: 'Roboto', 'Noto', sans-serif;
+    --app-primary-color: #4285f4;
+    --app-secondary-color: black;
+  }
+  </style>
+  <mwc-layout id="main-layout">
+    <bummerl-shell></bummerl-shell>
+    <point-modal></point-modal>
+    <settings-modal id="settingsModalContainer"></settings-modal>
+    <!-- <paper-drawer-panel id="drawerPanel" force-narrow>
+      <paper-header-panel drawer>
+        <drawer-menu></drawer-menu>
+      </paper-header-panel>
+      <main-content></main-content>
+    </paper-drawer-panel> -->
+  </mwc-layout>
+</body>

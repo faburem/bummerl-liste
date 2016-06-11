@@ -1,0 +1,22 @@
+{
+  "name": "bummerl-listse",
+  "authors": [
+    "Fabian Kromer <fabian.kromer@gmail.com>"
+  ],
+  "description": "Bummerl Liste",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.4.0",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7",
+    "app-layout": "polymerlabs/app-layout#^0.9.0"
+  }
+}

@@ -1,0 +1,19 @@
+<dom-module id="bummerl-shell">
+  <template>
+    <app-drawer-layout fullbleed force-narrow>
+      <!-- Drawer content -->
+      <app-drawer>
+        <drawer-menu></drawer-menu>
+      </app-drawer>
+      <app-header-layout has-scrolling-region>
+        <app-header effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+            <div title class="title">Bummerl Liste</div>
+          </app-toolbar>
+        </app-header>
+        <div region="main"></div>
+      </app-header-layout>
+    </app-drawer-layout>
+  </template>
+</dom-module>

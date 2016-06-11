@@ -1,0 +1,24 @@
+<dom-module id="drawer-menu">
+  <style is="custom-style">
+    paper-menu {
+      color:black;
+      width: 100%;
+    }
+    a, a:visited {
+      text-decoration: none;
+      color: grey;
+      font-family: 'Roboto', 'Noto', sans-serif;
+    }
+    paper-item > iron-icon {
+      margin: auto 10px;
+    }
+  </style>
+  <template>
+    <img src="/img/sidebar_bg_new.jpg"/>
+    <paper-menu id="navMenu">
+      <paper-item on-tap="changePage"><iron-icon icon="star" item-icon></iron-icon>Aktuelles Spiel</paper-item>
+      <paper-item on-tap="changePage"><iron-icon icon="list" item-icon></iron-icon>Alle Spiele</paper-item>
+      <paper-item on-tap="changePage"><iron-icon icon="settings" item-icon></iron-icon>Einstellungen</paper-item>
+    </paper-menu>
+  </template>
+</dom-module>

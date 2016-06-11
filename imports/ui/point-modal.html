@@ -1,0 +1,21 @@
+<dom-module id="point-modal">
+  <template>
+    <paper-dialog id="pointModal" modal>
+      <h2>Was wurde gespielt?</h2>
+      <paper-dialog-scrollable>
+        <paper-dropdown-menu label="Spiel (Punkte)" id="gamePlayed">
+          <paper-listbox class="dropdown-content">
+            <template is="dom-repeat" items="{{mwcData.specialGames}}">
+              <paper-item id="{{item._id}}">{{item.specialGameName}} ({{item.specialGamePoints}})</paper-item>
+            </template>
+          </paper-listbox>
+        </paper-dropdown-menu>
+        <paper-checkbox id="gspritzt" style="margin-left:20px;">Gspritzt?</paper-checkbox>
+      </paper-dialog-scrollable>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Schließen</paper-button>
+        <paper-button on-tap="savePoints">Eintragen</paper-button>
+      </div>
+    </paper-dialog>
+  </template>
+</dom-module>

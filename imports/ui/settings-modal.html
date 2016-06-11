@@ -1,0 +1,20 @@
+<dom-module id="settings-modal">
+  <style is="custom-style">
+    paper-input{
+      margin: auto 24px;
+    }
+  </style>
+  <template>
+    <paper-dialog id="settingsModal" modal>
+      <h2>Spiel bearbeiten</h2>
+      <paper-dialog-scrollable>
+        <paper-input label="Name des Spiels" id="gameName" value="{{gameName}}"></paper-input>
+        <paper-input type="number" label="Punkte" id="gamePoints" value="{{gamePoints}}"></paper-input>
+      </paper-dialog-scrollable>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Schließen</paper-button>
+        <paper-button on-tap="savePoints">Speichern</paper-button>
+      </div>
+    </paper-dialog>
+  </template>
+</dom-module>
