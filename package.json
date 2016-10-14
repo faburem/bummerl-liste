@@ -1,0 +1,55 @@
+{
+  "name": "bummerl-liste",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Die Companion App zum Bauernschnapsen",
+  "main": "meteor run",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^7.0.0",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-import-resolver-meteor": "^0.3.3",
+    "eslint-plugin-import": "^1.16.0"
+  },
+  "scripts": {
+    "lint": "eslint --quiet ."
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "allowImportExportEverywhere": true
+    },
+    "extends": [
+      "airbnb-base"
+    ],
+    "settings": {
+      "import/resolver": "meteor"
+    },
+    "rules": {
+      "semi": [
+        2,
+        "never"
+      ]
+    },
+    "globals": {
+      "FlowRouter": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faburem/bummerl-liste.git"
+  },
+  "keywords": [
+    "bummerl",
+    "liste",
+    "meteor",
+    "javascript"
+  ],
+  "author": "Fabian Kromer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faburem/bummerl-liste/issues"
+  },
+  "homepage": "https://github.com/faburem/bummerl-liste#readme"
+}
