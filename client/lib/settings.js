@@ -1,4 +1,4 @@
 window.Polymer = {
-  //dom: 'shadow',
-  lazyRegister: true
-};
+  // dom: 'shadow',
+  lazyRegister: true,
+}

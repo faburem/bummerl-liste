@@ -6,8 +6,8 @@
     }
     paper-fab{
       position: fixed;
-      bottom: 10px;
-      right: 10px;
+      bottom: 20px;
+      right: 20px;
       --paper-fab-background: #fff;
       color: #000;
     }
@@ -16,10 +16,16 @@
       @apply(--layout-around-justified);
     }
     paper-card{
+      width: 80%;
+      margin: auto;
+      display: block;
+    }
+    paper-button{
       width: 100%;
+      margin-bottom: 10px;
     }
     paper-input{
-      width:100%;
+      width: 100%;
       margin: 0 10px;
     }
     .header-text-center{
@@ -86,11 +92,10 @@
           </div>
         </div>
         <div class="flex bottom-margin">
-          <paper-button id="addPointsTeamA" raised style="width:100%" on-tap="addPointsTeamA">+ Punkte</paper-button>
-          <paper-button id="addPointsTeamB" raised style="width:100%" on-tap="addPointsTeamB">+ Punkte</paper-button>
+          <paper-button id="addPointsTeamA" raised on-tap="addPointsTeamA">+ Punkte</paper-button>
+          <paper-button id="addPointsTeamB" raised on-tap="addPointsTeamB">+ Punkte</paper-button>
         </div>
       </paper-card>
-      <br/>
       <br/>
       <paper-card class="bottom-margin">
         <div class="card-content">

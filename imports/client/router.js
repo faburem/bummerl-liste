@@ -1,36 +1,36 @@
-FlowRouter.wait();
-document.addEventListener("WebComponentsReady", function() {
+import { FlowRouter } from 'meteor/kadira:flow-router'
+import { mwcLayout } from 'meteor/mwc:layout'
+import { Session } from 'meteor/session'
+import { GameHistory } from './startup'
+
+FlowRouter.wait()
+document.addEventListener('WebComponentsReady', () => {
   FlowRouter.initialize({
-  });
-});
+  })
+})
 FlowRouter.route('/', {
-  action: function(){
-  	Session.set("limit",1);
-  	if(Session.get("currentGame")==undefined){
-  		var lastGame = GameHistory.find({creationUser:Session.get("appId")},{limit:Session.get("limit"),sort:{creationDate:-1}}).fetch()[0];
-  		if(lastGame != undefined){
-  			Session.setPersistent("currentGame", lastGame._id);
-  		}
-  	}
-  	// this.layout("bummerlLayout",{data: {title: 'Aktuelles Spiel',styleAddition:'margin-bottom:0;'}});
-    mwcLayout.render("main-layout",{"main":"bummerl-liste"}, true);
+  action: () => {
+    Session.set('limit', 1)
+    if (Session.get('currentGame') === undefined) {
+      const lastGame = GameHistory.find({ creationUser: Session.get('appId') }, { limit: Session.get('limit'), sort: { creationDate: -1 } }).fetch()[0]
+      if (lastGame !== undefined) {
+        Session.setPersistent('currentGame', lastGame._id)
+      }
+    }
+    mwcLayout.render('main-layout', { main: 'bummerl-liste' }, true)
   },
-  name: 'Aktuelles Spiel'
-});
+  name: 'Aktuelles Spiel',
+})
 FlowRouter.route('/gameHistory', {
-  action: function(){
-  	Session.set("limit",20);
-  	// this.layout("bummerlLayout",{data: {title: 'Alle Spiele'}});
-  	// this.render('gamehistory');
-    mwcLayout.render("main-layout",{"main":"game-history"}, true);
+  action: () => {
+    Session.set('limit', 20)
+    mwcLayout.render('main-layout', { main: 'game-history' }, true)
   },
-  name: 'Alle Spiele'
-});
+  name: 'Alle Spiele',
+})
 FlowRouter.route('/bummerlSettings', {
-  action: function(){
-  	// this.layout("bummerlLayout",{data: {title: 'Einstellungen'}});
-  	// this.render("bummerlSettings");
-    mwcLayout.render("main-layout",{"main":"bummerl-settings"}, true);
+  action: () => {
+    mwcLayout.render('main-layout', { main: 'bummerl-settings' }, true)
   },
-  name: 'Einstellungen'
-});
+  name: 'Einstellungen',
+})

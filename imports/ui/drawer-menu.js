@@ -1,10 +1,12 @@
+import { FlowRouter } from 'meteor/kadira:flow-router'
 import './drawer-menu.html'
+
 Polymer({
-  is: "drawer-menu",
-  changePage: function(e){
-    e.preventDefault()
+  is: 'drawer-menu',
+  changePage: (event) => {
+    event.preventDefault()
     // console.log(e.target.textContent.trim())
-    FlowRouter.go(e.target.textContent.trim())
-    document.querySelector('app-drawer').toggle();
+    FlowRouter.go(event.target.textContent.trim())
+    document.querySelector('app-drawer').toggle()
   },
-});
+})

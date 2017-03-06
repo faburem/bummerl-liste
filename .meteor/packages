@@ -4,22 +4,23 @@
 # but you can also edit it by hand.
 
 u2622:persistent-session
-mongo
-session
-tracker
-logging
-reload
-random
-ejson
-standard-minifier-css
-standard-minifier-js
+mongo@1.1.15
+session@1.1.7
+tracker@1.1.2
+logging@1.1.17
+reload@1.1.11
+random@1.0.10
+ejson@1.0.13
+standard-minifier-css@1.3.3
+standard-minifier-js@1.2.2
 ground:db
 kadira:flow-router
-mobile-experience
+mobile-experience@1.0.4
 mwc:synthesis
-ecmascript
+ecmascript@0.6.3
 mwc:mixin
 mwc:layout
-underscore
-webapp
-meteor
+underscore@1.0.10
+webapp@1.3.13
+meteor@1.6.1
+shell-server

@@ -1,5 +1,5 @@
 import './bummerl-shell.html'
-Polymer({
-  is: "bummerl-shell",
 
-});
+Polymer({
+  is: 'bummerl-shell',
+})

@@ -1,75 +1,76 @@
+import { mwcMixin } from 'meteor/mwc:mixin'
 import './point-modal.html'
-import { setupNewBummerl } from '../api/utils.js'
+import { setupNewBummerl } from '../api/utils'
+import { SpecialGames, Bummerl } from '../client/startup'
+
 
 Polymer({
-  is: "point-modal",
+  is: 'point-modal',
   behaviors: [mwcMixin],
-  getMeteorData: function(){
+  getMeteorData: function getSpecialGames() {
     return {
-      specialGames: SpecialGames.find({}, { sort: { specialGamePoints: 1 } }).fetch()
+      specialGames: SpecialGames.find({}, { sort: { specialGamePoints: 1 } }).fetch(),
     }
   },
-  savePoints: function(){
-    if(!document.querySelector("#gamePlayed").selectedItem.id){
+  savePoints: () => {
+    if (!document.querySelector('#gamePlayed').selectedItem.id) {
       return
     }
-    var gamePoints = SpecialGames.findOne({
-      _id: document.querySelector("#gamePlayed").selectedItem.id
+    let gamePoints = SpecialGames.findOne({
+      _id: document.querySelector('#gamePlayed').selectedItem.id,
     }).specialGamePoints
-    var currentGame = Session.get("currentGame")
-    if(document.querySelector("#gspritzt").checked){
-      gamePoints = gamePoints * 2
+    const currentGame = Session.get('currentGame')
+    if (document.querySelector('#gspritzt').checked) {
+      gamePoints *= 2
     }
-    var points = Bummerl.findOne({ gameId: currentGame, team: '' }).points;
-    var lastPoints = points[points.length - 1];
-    var pointObject = points === undefined ? new Array() : points;
-    var targetTeam = "";
-    if(Session.equals("currentTeam", "teamA")){
-      var pointLine = {
+    const points = Bummerl.findOne({ gameId: currentGame, team: '' }).points
+    const lastPoints = points[points.length - 1]
+    let pointObject = points === undefined ? [] : points
+    const targetTeam = ''
+    if (Session.equals('currentTeam', 'teamA')) {
+      const pointLine = {
         teamApoints: lastPoints.teamApoints - gamePoints,
         teamBpoints: lastPoints.teamBpoints,
-        creationDate: new Date()
-      };
-      pointObject.push(pointLine);
-      if(lastPoints.teamApoints - gamePoints <= 0){
+        creationDate: new Date(),
+      }
+      pointObject.push(pointLine)
+      if (lastPoints.teamApoints - gamePoints <= 0) {
         Bummerl.update({ gameId: currentGame, team: '' }, {
           $set: {
             points: pointObject,
             team: Session.get('currentTeam'),
-            modificationDate:new Date()
+            modificationDate: new Date(),
           } })
-        var pointObject = setupNewBummerl();
+        pointObject = setupNewBummerl()
         Bummerl.insert({
           gameId: currentGame,
-          team:'',
+          team: '',
           modificationDate: new Date(),
-          points: pointObject
+          points: pointObject,
         })
       }
-      Bummerl.update({ gameId: currentGame, team: ''}, {
-        $set: { points: pointObject, team: targetTeam, modificationDate: new Date() }
+      Bummerl.update({ gameId: currentGame, team: '' }, {
+        $set: { points: pointObject, team: targetTeam, modificationDate: new Date() },
       })
-    }
-    else{
-      var pointLine = {
+    } else {
+      const pointLine = {
         teamApoints: lastPoints.teamApoints,
         teamBpoints: lastPoints.teamBpoints - gamePoints,
-        creationDate: new Date()
-      };
-      pointObject.push(pointLine);
-      if(lastPoints.teamBpoints - gamePoints <= 0){
-        Bummerl.update({ gameId: currentGame, team:''}, {
-          $set: { points: pointObject, team: "teamB", modificationDate: new Date()}
-        });
-      var pointObject = setupNewBummerl();
-        Bummerl.insert({ gameId: currentGame, team: '', modificationDate: new Date(), points: pointObject });
+        creationDate: new Date(),
       }
-      else{
-        Bummerl.update({ gameId: currentGame, team: ''},
-          { $set: { points: pointObject, modificationDate: new Date() }
-        });
+      pointObject.push(pointLine)
+      if (lastPoints.teamBpoints - gamePoints <= 0) {
+        Bummerl.update({ gameId: currentGame, team: '' }, {
+          $set: { points: pointObject, team: 'teamB', modificationDate: new Date() },
+        })
+        pointObject = setupNewBummerl()
+        Bummerl.insert({ gameId: currentGame, team: '', modificationDate: new Date(), points: pointObject })
+      } else {
+        Bummerl.update({ gameId: currentGame, team: '' },
+          { $set: { points: pointObject, modificationDate: new Date() },
+          })
       }
     }
     document.querySelector('#pointModal').close()
-  }
-});
+  },
+})
